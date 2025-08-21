@@ -6,7 +6,7 @@
 // Được sử dụng trong VietnamMap khi người dùng chọn một thành phố.
 
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/utils/cities.dart';
+import 'package:my_app/utils/cities.dart';
 
 class CitySheet extends StatelessWidget {
   final City city;

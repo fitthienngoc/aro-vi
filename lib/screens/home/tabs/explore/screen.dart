@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/vietnam_map.dart';
+import 'package:my_app/screens/home/tabs/explore/widgets/vietnam_map.dart';
 
 class ExploreTab extends StatelessWidget {
   const ExploreTab({super.key});

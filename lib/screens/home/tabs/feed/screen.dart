@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/post/index.dart';
-import 'package:my_app/widgets/post_card.dart';
+import 'package:my_app/screens/home/tabs/feed/widgets/post_card.dart';
 
 class FeedTab extends StatefulWidget {
   const FeedTab({super.key});
