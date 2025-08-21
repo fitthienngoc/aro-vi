@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/screens/home/tabs/feed/screen.dart';
 import 'package:my_app/screens/home/tabs/explore/screen.dart';
+import 'package:my_app/screens/home/tabs/mess/screen.dart';
+import 'package:my_app/screens/home/tabs/profile/screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -54,33 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Mess'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
-      ),
-    );
-  }
-}
-
-// Tab Mess - nơi nhắn tin
-class MessTab extends StatelessWidget {
-  const MessTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Mess Tab - Nơi nhắn tin', style: TextStyle(fontSize: 18)),
-    );
-  }
-}
-
-// Tab Profile - nơi quản lý thông tin tài khoản
-class ProfileTab extends StatelessWidget {
-  const ProfileTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Profile Tab - Nơi quản lý thông tin tài khoản',
-        style: TextStyle(fontSize: 18),
       ),
     );
   }

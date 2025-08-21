@@ -21,14 +21,17 @@ class CitySheet extends StatelessWidget {
     return Container(
       // Đặt chiều cao tối thiểu để đảm bảo sheet đủ cao
       constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height * 0.85, // 85% chiều cao màn hình
-        minHeight: MediaQuery.of(context).size.height * 0.6, // ít nhất 60% chiều cao màn hình
+        maxHeight:
+            MediaQuery.of(context).size.height * 0.85, // 85% chiều cao màn hình
+        minHeight:
+            MediaQuery.of(context).size.height *
+            0.6, // ít nhất 60% chiều cao màn hình
       ),
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+        children: [
           // Tiêu đề thành phố
           _buildCityHeader(context),
           const SizedBox(height: 12),
@@ -38,7 +41,7 @@ class CitySheet extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Menu từ trên xuống dưới
-        Expanded(
+          Expanded(
             child: ListView(
               padding: EdgeInsets.only(bottom: 16 + bottomPadding),
               children: [
@@ -48,7 +51,7 @@ class CitySheet extends StatelessWidget {
                   onTap: () {
                     debugPrint('Đã chọn thông tin chung của ${city.name}');
                   },
-          ),
+                ),
 
                 // Mục lịch sử
                 _buildMenuSection(
@@ -58,7 +61,7 @@ class CitySheet extends StatelessWidget {
                     debugPrint('Đã chọn lịch sử của ${city.name}');
                     // Có thể mở một trang mới hoặc hiển thị dialog với thông tin lịch sử
                   },
-        ),
+                ),
 
                 // Mục ẩm thực
                 _buildMenuSection(
@@ -68,19 +71,17 @@ class CitySheet extends StatelessWidget {
                     debugPrint('Đã chọn ẩm thực của ${city.name}');
                     // Có thể hiển thị danh sách món ăn đặc sản của thành phố
                   },
-        ),
+                ),
 
                 // Mục danh nhân văn hóa
                 _buildMenuSection(
                   title: 'Danh nhân văn hóa',
                   icon: Icons.people_alt_outlined,
                   onTap: () {
-                    debugPrint(
-                      'Đã chọn danh nhân văn hóa của ${city.name}',
-    );
+                    debugPrint('Đã chọn danh nhân văn hóa của ${city.name}');
                     // Hiển thị danh sách các danh nhân nổi tiếng của thành phố
                   },
-        ),
+                ),
 
                 // Mục di tích lịch sử
                 _buildMenuSection(
@@ -97,9 +98,7 @@ class CitySheet extends StatelessWidget {
                   title: 'Lễ hội truyền thống',
                   icon: Icons.celebration,
                   onTap: () {
-                    debugPrint(
-                      'Đã chọn lễ hội truyền thống của ${city.name}',
-                    );
+                    debugPrint('Đã chọn lễ hội truyền thống của ${city.name}');
                     // Hiển thị thông tin về các lễ hội truyền thống của thành phố
                   },
                 ),
@@ -110,7 +109,7 @@ class CitySheet extends StatelessWidget {
                   onTap: () {
                     debugPrint('Đã chọn địa điểm nổi bật của ${city.name}');
                   },
-        ),
+                ),
 
                 _buildMenuSection(
                   title: 'Thời tiết',
@@ -118,7 +117,7 @@ class CitySheet extends StatelessWidget {
                   onTap: () {
                     debugPrint('Đã chọn thời tiết của ${city.name}');
                   },
-      ),
+                ),
               ],
             ),
           ),
@@ -151,7 +150,7 @@ class CitySheet extends StatelessWidget {
         ),
       ],
     );
-}
+  }
 
   // Widget hiển thị tọa độ
   Widget _buildCoordinates() {
