@@ -13,6 +13,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:my_app/widgets/city_sheet.dart'; // Import widget mới
 import 'package:my_app/widgets/utils/cities.dart';
 import 'package:my_app/widgets/utils/geojson_vn.dart';
 
@@ -88,7 +89,13 @@ class _VietnamMapState extends State<VietnamMap> {
       context: context,
       useSafeArea: true,
       showDragHandle: true,
-      builder: (_) => _CitySheet(city: city),
+      isScrollControlled: true, // Cho phép sheet chiếm nhiều không gian hơn
+      constraints: BoxConstraints(
+        maxHeight:
+            MediaQuery.of(context).size.height *
+            0.65, // Tối đa 85% chiều cao màn hình
+      ),
+      builder: (_) => CitySheet(city: city),
     );
   }
 
@@ -138,18 +145,18 @@ class _VietnamMapState extends State<VietnamMap> {
                       ),
                       children: [
                         // Tiles OSM
-                        TileLayer(
-                          urlTemplate:
-                              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          userAgentPackageName: 'com.example.app',
-                        ),
+                        // TileLayer(
+                        //   urlTemplate:
+                        //       'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        //   userAgentPackageName: 'com.voodik.arovi-test',
+                        // ),
 
                         // Mask tối ngoài VN (tuỳ chọn)
                         if (widget.enableMaskOutside && _vnPolys.isNotEmpty)
                           PolygonLayer(
                             polygons: [
                               Polygon(
-                                // world rect (đổi thành thứ tự topo “vuông” này cho chắc)
+                                // world rect (đổi thành thứ tự topo "vuông" này cho chắc)
                                 points: const [
                                   LatLng(85, -180),
                                   LatLng(85, 180),
@@ -301,50 +308,6 @@ class _ZoomBtn extends StatelessWidget {
       heroTag: icon.codePoint.toString(),
       onPressed: onTap,
       child: Icon(icon),
-    );
-  }
-}
-
-class _CitySheet extends StatelessWidget {
-  final City city;
-  const _CitySheet({required this.city});
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Icon(Icons.location_city),
-                const SizedBox(width: 8),
-                Text(city.name, style: Theme.of(context).textTheme.titleLarge),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                const Icon(Icons.place, size: 18),
-                const SizedBox(width: 6),
-                Text(
-                  '(${city.latLng.latitude.toStringAsFixed(4)}, '
-                  '${city.latLng.longitude.toStringAsFixed(4)})',
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            FilledButton.icon(
-              onPressed: () => Navigator.pop(context),
-              icon: const Icon(Icons.check),
-              label: const Text('OK'),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
