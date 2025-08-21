@@ -6,6 +6,9 @@
 // Được sử dụng trong VietnamMap khi người dùng chọn một thành phố.
 
 import 'package:flutter/material.dart';
+import 'package:my_app/screens/home/tabs/explore/widgets/city_sheet/city_cuisine/screen.dart';
+import 'package:my_app/screens/home/tabs/explore/widgets/city_sheet/city_general_info/screen.dart';
+import 'package:my_app/screens/home/tabs/explore/widgets/city_sheet/city_history/screen.dart';
 import 'package:my_app/utils/cities.dart';
 
 class CitySheet extends StatelessWidget {
@@ -50,6 +53,13 @@ class CitySheet extends StatelessWidget {
                   icon: Icons.info_outline,
                   onTap: () {
                     debugPrint('Đã chọn thông tin chung của ${city.name}');
+                    // Mở màn hình thông tin chung
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CityGeneralInfoScreen(city: city),
+                      ),
+                    );
                   },
                 ),
 
@@ -59,6 +69,14 @@ class CitySheet extends StatelessWidget {
                   icon: Icons.history_edu,
                   onTap: () {
                     debugPrint('Đã chọn lịch sử của ${city.name}');
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            CityFormationHistoryScreen(city: city),
+                      ),
+                    );
                     // Có thể mở một trang mới hoặc hiển thị dialog với thông tin lịch sử
                   },
                 ),
@@ -69,6 +87,12 @@ class CitySheet extends StatelessWidget {
                   icon: Icons.restaurant_menu,
                   onTap: () {
                     debugPrint('Đã chọn ẩm thực của ${city.name}');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CityCuisineScreen(city: city),
+                      ),
+                    );
                     // Có thể hiển thị danh sách món ăn đặc sản của thành phố
                   },
                 ),
